@@ -22,7 +22,7 @@ export const portfolioData = {
     status: "Available for Projects & Collaboration",
     profileImage: "/formal_profile.png",
     aboutImage: "/about_photo.png",
-    resumeUrl: "https://drive.google.com/file/d/1_Isso2Qk9xqHtEG5ac5uCiDjaOsk49Yl/view?usp=sharing",
+    resumeUrl: "https://drive.google.com/drive/folders/1fEpaoTSlNIPH0tXN19TLXCY3yephYcfe",
     email: "mrezkyjulian1@gmail.com",
     spotifyEmbedUrl: "https://open.spotify.com/embed/playlist/4e7CA8obF944UVhwVOA884?utm_source=generator&theme=0",
     spotifyPlaylistUrl: "https://open.spotify.com/playlist/4e7CA8obF944UVhwVOA884",
