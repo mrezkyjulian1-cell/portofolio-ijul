@@ -204,7 +204,7 @@ export default function Hero() {
                         <div>
                           <div className="text-white font-bold text-sm">{personal.name}</div>
                           <div className="text-xs text-blue-400 font-mono">
-                            Universitas Brawijaya
+                            SMK Wiraswasta Cimahi
                           </div>
                         </div>
                         <div className="w-8 h-8 rounded-lg bg-blue-500/20 border border-blue-400/30 flex items-center justify-center">
