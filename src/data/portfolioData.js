@@ -40,14 +40,14 @@ export const portfolioData = {
     },
     {
       label: "Certificates Earned",
-      value: "1",
+      value: "0",
       subtext: "Skills validated & tested",
       color: "#2c67ed",
       category: "certificates"
     },
     {
       label: "Awards & Honors",
-      value: "1",
+      value: "0",
       subtext: "Competitions & recognition",
       color: "#8b5cf6",
       category: "awards"
@@ -203,48 +203,7 @@ export const portfolioData = {
     }
   ],
 
-  certificates: [
-    {
-      id: "cert-1",
-      title: "Full Stack Web Development Professional",
-      issuer: "Global Tech Academy",
-      date: "October 2023",
-      category: "keahlian",
-      skills: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"]
-    },
-    {
-      id: "cert-2",
-      title: "Computer Network & Security Specialist",
-      issuer: "MikroTik & Cisco Networking Academy",
-      date: "May 2024",
-      category: "keahlian",
-      skills: ["Routing", "Subnetting", "Firewall", "Network Architecture"]
-    },
-    {
-      id: "cert-3",
-      title: "UI/UX Design Masterclass",
-      issuer: "DesignLab Indonesia",
-      date: "January 2024",
-      category: "keahlian",
-      skills: ["Figma", "User Journey", "Design System", "Prototyping"]
-    },
-    {
-      id: "cert-4",
-      title: "1st Place Winner - Web Design Competition",
-      issuer: "Brawijaya Tech Fest",
-      date: "November 2024",
-      category: "prestasi",
-      skills: ["Creative UI", "Framer Motion", "Responsive Design"]
-    },
-    {
-      id: "cert-5",
-      title: "Finalist National Software Development",
-      issuer: "Kemenristekdikti",
-      date: "August 2024",
-      category: "prestasi",
-      skills: ["Problem Solving", "Full Stack Engineering"]
-    }
-  ],
+  certificates: [],
 
   education: [
     {

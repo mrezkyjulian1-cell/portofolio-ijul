@@ -246,105 +246,119 @@ export default function Projects({ activeTab = 0, onTabChange }) {
 
         {/* TAB 1: CERTIFICATES */}
         {tab === 1 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {certItems.map((cert, idx) => (
-              <motion.div
-                key={cert.id}
-                initial={{ opacity: 0, y: 35 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                onClick={() => cert.image && setPreviewCertificate(cert)}
-                className={`group relative rounded-2xl overflow-hidden bg-slate-900/50 border border-white/[0.08] hover:border-blue-500/40 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${cert.image ? "cursor-pointer" : ""}`}
-              >
-                {cert.image ? (
-                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-950">
-                    <img
-                      src={cert.image}
-                      alt={cert.title}
-                      loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-semibold shadow-lg">
-                        <Maximize2 className="w-4 h-4" />
-                        <span>View Full Certificate</span>
+          certItems.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {certItems.map((cert, idx) => (
+                <motion.div
+                  key={cert.id}
+                  initial={{ opacity: 0, y: 35 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  onClick={() => cert.image && setPreviewCertificate(cert)}
+                  className={`group relative rounded-2xl overflow-hidden bg-slate-900/50 border border-white/[0.08] hover:border-blue-500/40 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${cert.image ? "cursor-pointer" : ""}`}
+                >
+                  {cert.image ? (
+                    <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-950">
+                      <img
+                        src={cert.image}
+                        alt={cert.title}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-semibold shadow-lg">
+                          <Maximize2 className="w-4 h-4" />
+                          <span>View Full Certificate</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ) : (
-                  <div className="flex items-center justify-center h-28 w-full bg-slate-950/60 border-b border-white/[0.06]">
-                    <Award className="w-8 h-8 text-blue-400/70" />
-                  </div>
-                )}
+                  ) : (
+                    <div className="flex items-center justify-center h-28 w-full bg-slate-950/60 border-b border-white/[0.06]">
+                      <Award className="w-8 h-8 text-blue-400/70" />
+                    </div>
+                  )}
 
-                <div className="p-5 text-left">
-                  <span className="text-[11px] font-mono text-blue-400 font-semibold uppercase">
-                    {cert.issuer}
-                  </span>
-                  <h3 className="text-base font-bold text-white mt-1 group-hover:text-blue-300 transition-colors">
-                    {cert.title}
-                  </h3>
-                  <div className="flex items-center justify-between text-xs text-slate-400 mt-3 pt-3 border-t border-white/[0.06]">
-                    <span>{cert.date}</span>
-                    <span className="text-cyan-400 font-mono">Verified Credential</span>
+                  <div className="p-5 text-left">
+                    <span className="text-[11px] font-mono text-blue-400 font-semibold uppercase">
+                      {cert.issuer}
+                    </span>
+                    <h3 className="text-base font-bold text-white mt-1 group-hover:text-blue-300 transition-colors">
+                      {cert.title}
+                    </h3>
+                    <div className="flex items-center justify-between text-xs text-slate-400 mt-3 pt-3 border-t border-white/[0.06]">
+                      <span>{cert.date}</span>
+                      <span className="text-cyan-400 font-mono">Verified Credential</span>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                </motion.div>
+              ))}
+            </div>
+          ) : (
+            <div className="py-16 px-6 rounded-2xl bg-slate-900/30 border border-white/[0.06] text-center max-w-md mx-auto">
+              <Award className="w-8 h-8 text-slate-600 mx-auto mb-3" />
+              <p className="text-sm text-slate-400 font-mono">Belum ada sertifikat yang ditampilkan.</p>
+            </div>
+          )
         )}
 
         {/* TAB 2: AWARDS */}
         {tab === 2 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {awardItems.map((award, idx) => (
-              <motion.div
-                key={award.id}
-                initial={{ opacity: 0, y: 35 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                onClick={() => award.image && setPreviewCertificate(award)}
-                className={`group relative rounded-2xl overflow-hidden bg-slate-900/50 border border-white/[0.08] hover:border-amber-500/40 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${award.image ? "cursor-pointer" : ""}`}
-              >
-                {award.image ? (
-                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-950">
-                    <img
-                      src={award.image}
-                      alt={award.title}
-                      loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-600 text-white text-xs font-semibold shadow-lg">
-                        <Maximize2 className="w-4 h-4" />
-                        <span>View Award</span>
+          awardItems.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {awardItems.map((award, idx) => (
+                <motion.div
+                  key={award.id}
+                  initial={{ opacity: 0, y: 35 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  onClick={() => award.image && setPreviewCertificate(award)}
+                  className={`group relative rounded-2xl overflow-hidden bg-slate-900/50 border border-white/[0.08] hover:border-amber-500/40 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${award.image ? "cursor-pointer" : ""}`}
+                >
+                  {award.image ? (
+                    <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-950">
+                      <img
+                        src={award.image}
+                        alt={award.title}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-600 text-white text-xs font-semibold shadow-lg">
+                          <Maximize2 className="w-4 h-4" />
+                          <span>View Award</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ) : (
-                  <div className="flex items-center justify-center h-28 w-full bg-slate-950/60 border-b border-white/[0.06]">
-                    <Trophy className="w-8 h-8 text-amber-400/70" />
-                  </div>
-                )}
+                  ) : (
+                    <div className="flex items-center justify-center h-28 w-full bg-slate-950/60 border-b border-white/[0.06]">
+                      <Trophy className="w-8 h-8 text-amber-400/70" />
+                    </div>
+                  )}
 
-                <div className="p-5 text-left">
-                  <span className="text-[11px] font-mono text-amber-400 font-semibold uppercase flex items-center gap-1">
-                    <Trophy className="w-3.5 h-3.5" />
-                    {award.issuer}
-                  </span>
-                  <h3 className="text-base font-bold text-white mt-1 group-hover:text-amber-300 transition-colors">
-                    {award.title}
-                  </h3>
-                  <div className="flex items-center justify-between text-xs text-slate-400 mt-3 pt-3 border-t border-white/[0.06]">
-                    <span>{award.date}</span>
-                    <span className="text-amber-400 font-mono">Competition Winner</span>
+                  <div className="p-5 text-left">
+                    <span className="text-[11px] font-mono text-amber-400 font-semibold uppercase flex items-center gap-1">
+                      <Trophy className="w-3.5 h-3.5" />
+                      {award.issuer}
+                    </span>
+                    <h3 className="text-base font-bold text-white mt-1 group-hover:text-amber-300 transition-colors">
+                      {award.title}
+                    </h3>
+                    <div className="flex items-center justify-between text-xs text-slate-400 mt-3 pt-3 border-t border-white/[0.06]">
+                      <span>{award.date}</span>
+                      <span className="text-amber-400 font-mono">Competition Winner</span>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                </motion.div>
+              ))}
+            </div>
+          ) : (
+            <div className="py-16 px-6 rounded-2xl bg-slate-900/30 border border-white/[0.06] text-center max-w-md mx-auto">
+              <Trophy className="w-8 h-8 text-slate-600 mx-auto mb-3" />
+              <p className="text-sm text-slate-400 font-mono">Belum ada penghargaan yang ditampilkan.</p>
+            </div>
+          )
         )}
 
         {/* TAB 3: TECH STACK GRID */}
