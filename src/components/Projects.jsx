@@ -254,23 +254,29 @@ export default function Projects({ activeTab = 0, onTabChange }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                onClick={() => setPreviewCertificate(cert)}
-                className="group relative rounded-2xl overflow-hidden bg-slate-900/50 border border-white/[0.08] hover:border-blue-500/40 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer"
+                onClick={() => cert.image && setPreviewCertificate(cert)}
+                className={`group relative rounded-2xl overflow-hidden bg-slate-900/50 border border-white/[0.08] hover:border-blue-500/40 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${cert.image ? "cursor-pointer" : ""}`}
               >
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-950">
-                  <img
-                    src={cert.image}
-                    alt={cert.title}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-semibold shadow-lg">
-                      <Maximize2 className="w-4 h-4" />
-                      <span>View Full Certificate</span>
+                {cert.image ? (
+                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-950">
+                    <img
+                      src={cert.image}
+                      alt={cert.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-semibold shadow-lg">
+                        <Maximize2 className="w-4 h-4" />
+                        <span>View Full Certificate</span>
+                      </div>
                     </div>
                   </div>
-                </div>
+                ) : (
+                  <div className="flex items-center justify-center h-28 w-full bg-slate-950/60 border-b border-white/[0.06]">
+                    <Award className="w-8 h-8 text-blue-400/70" />
+                  </div>
+                )}
 
                 <div className="p-5 text-left">
                   <span className="text-[11px] font-mono text-blue-400 font-semibold uppercase">
@@ -299,23 +305,29 @@ export default function Projects({ activeTab = 0, onTabChange }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                onClick={() => setPreviewCertificate(award)}
-                className="group relative rounded-2xl overflow-hidden bg-slate-900/50 border border-white/[0.08] hover:border-amber-500/40 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer"
+                onClick={() => award.image && setPreviewCertificate(award)}
+                className={`group relative rounded-2xl overflow-hidden bg-slate-900/50 border border-white/[0.08] hover:border-amber-500/40 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${award.image ? "cursor-pointer" : ""}`}
               >
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-950">
-                  <img
-                    src={award.image}
-                    alt={award.title}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-600 text-white text-xs font-semibold shadow-lg">
-                      <Maximize2 className="w-4 h-4" />
-                      <span>View Award</span>
+                {award.image ? (
+                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-950">
+                    <img
+                      src={award.image}
+                      alt={award.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-600 text-white text-xs font-semibold shadow-lg">
+                        <Maximize2 className="w-4 h-4" />
+                        <span>View Award</span>
+                      </div>
                     </div>
                   </div>
-                </div>
+                ) : (
+                  <div className="flex items-center justify-center h-28 w-full bg-slate-950/60 border-b border-white/[0.06]">
+                    <Trophy className="w-8 h-8 text-amber-400/70" />
+                  </div>
+                )}
 
                 <div className="p-5 text-left">
                   <span className="text-[11px] font-mono text-amber-400 font-semibold uppercase flex items-center gap-1">

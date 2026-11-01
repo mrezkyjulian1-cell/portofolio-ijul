@@ -210,7 +210,6 @@ export const portfolioData = {
       issuer: "Global Tech Academy",
       date: "October 2023",
       category: "keahlian",
-      image: asset("certificates/cert1.jpg"),
       skills: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"]
     },
     {
@@ -219,7 +218,6 @@ export const portfolioData = {
       issuer: "MikroTik & Cisco Networking Academy",
       date: "May 2024",
       category: "keahlian",
-      image: asset("certificates/cert1.jpg"),
       skills: ["Routing", "Subnetting", "Firewall", "Network Architecture"]
     },
     {
@@ -228,7 +226,6 @@ export const portfolioData = {
       issuer: "DesignLab Indonesia",
       date: "January 2024",
       category: "keahlian",
-      image: asset("certificates/cert1.jpg"),
       skills: ["Figma", "User Journey", "Design System", "Prototyping"]
     },
     {
@@ -237,7 +234,6 @@ export const portfolioData = {
       issuer: "Brawijaya Tech Fest",
       date: "November 2024",
       category: "prestasi",
-      image: asset("certificates/cert1.jpg"),
       skills: ["Creative UI", "Framer Motion", "Responsive Design"]
     },
     {
@@ -246,7 +242,6 @@ export const portfolioData = {
       issuer: "Kemenristekdikti",
       date: "August 2024",
       category: "prestasi",
-      image: asset("certificates/cert1.jpg"),
       skills: ["Problem Solving", "Full Stack Engineering"]
     }
   ],
