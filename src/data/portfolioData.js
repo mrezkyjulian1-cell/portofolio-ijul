@@ -72,8 +72,8 @@ export const portfolioData = {
     },
     {
       name: "Instagram",
-      handle: "@apcbjuliann",
-      url: "https://www.instagram.com/apcbjuliann/",
+      handle: "@lmkjulianissue",
+      url: "https://www.instagram.com/lmkjulianissue/",
       icon: "instagram",
       gradient: "from-[#833AB4] via-[#E4405F] to-[#FCAF45]",
       accent: "#f43f5e"
