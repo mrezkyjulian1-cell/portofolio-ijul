@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Mail, Sparkles, Music2, UserCheck, Flame, ExternalLink } from "lucide-react";
 import { GithubIcon, LinkedinIcon, InstagramIcon } from "./SocialIcons";
 import { portfolioData } from "../data/portfolioData";
@@ -7,44 +7,17 @@ import { portfolioData } from "../data/portfolioData";
 export default function Hero() {
   const { personal, socials } = portfolioData;
 
-  // Typewriter state
-  const [currentText, setCurrentText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
   const [roleIndex, setRoleIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
 
   // Widget switch (Avatar vs Spotify Daily Rotation as in reference)
   const [activeWidget, setActiveWidget] = useState("profile"); // 'profile' | 'spotify'
 
-  const typingSpeed = 100;
-  const deletingSpeed = 45;
-  const pauseTime = 2000;
-
-  const handleTyping = useCallback(() => {
-    const fullRole = personal.roles[roleIndex];
-
-    if (!isDeleting) {
-      if (charIndex < fullRole.length) {
-        setCurrentText((prev) => prev + fullRole[charIndex]);
-        setCharIndex((prev) => prev + 1);
-      } else {
-        setTimeout(() => setIsDeleting(true), pauseTime);
-      }
-    } else {
-      if (charIndex > 0) {
-        setCurrentText((prev) => prev.slice(0, -1));
-        setCharIndex((prev) => prev - 1);
-      } else {
-        setIsDeleting(false);
-        setRoleIndex((prev) => (prev + 1) % personal.roles.length);
-      }
-    }
-  }, [charIndex, isDeleting, roleIndex, personal.roles]);
-
   useEffect(() => {
-    const timer = setTimeout(handleTyping, isDeleting ? deletingSpeed : typingSpeed);
-    return () => clearTimeout(timer);
-  }, [handleTyping, isDeleting]);
+    const interval = setInterval(() => {
+      setRoleIndex((prev) => (prev + 1) % personal.roles.length);
+    }, 3200);
+    return () => clearInterval(interval);
+  }, [personal.roles.length]);
 
   return (
     <section
@@ -56,75 +29,90 @@ export default function Hero() {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
           {/* Left Column: Hero Content */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="w-full lg:w-7/12 space-y-6 text-left"
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
+            className="w-full lg:w-7/12 space-y-7 text-left"
           >
-            {/* Status Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/25 text-blue-300 text-xs font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)]">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            {/* Minimalist Status & Location Index */}
+            <div className="flex flex-wrap items-center gap-3 text-xs font-mono tracking-wide">
+              <span className="inline-flex items-center gap-2 text-slate-300">
+                <span className="h-2 w-2 rounded-full bg-emerald-400 ring-4 ring-emerald-400/15" />
+                <span>Available for projects</span>
               </span>
-              <span>{personal.status}</span>
+              <span className="h-3.5 w-px bg-white/15" aria-hidden="true" />
+              <span className="text-slate-500">Cimahi, Indonesia</span>
             </div>
 
-            {/* Giant Gradient Title matching reference */}
-            <div className="space-y-1">
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.08] font-sans">
-                <span className="grad-vi block">{personal.heroHeadingPrefix}</span>
-                <span className="text-white block mt-1">{personal.heroHeadingSuffix}</span>
-              </h1>
+            {/* Editorial Display Statement */}
+            <h1 className="text-4xl sm:text-5xl lg:text-[3.65rem] font-semibold tracking-[-0.035em] leading-[1.08] text-slate-100">
+              <span className="block">
+                Building fast,{" "}
+                <span className="font-serif italic font-normal text-blue-200/95 tracking-normal text-[1.06em]">
+                  reliable
+                </span>
+              </span>
+              <span className="block mt-1">web applications</span>
+              <span className="block mt-1 text-slate-400 font-normal">
+                with clean architecture.
+              </span>
+            </h1>
+
+            {/* Author Byline + Grounded Bio */}
+            <div className="border-l border-white/15 pl-4 sm:pl-5 space-y-2.5 max-w-xl">
+              <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-sm">
+                <span className="font-semibold text-slate-100 tracking-[-0.01em]">
+                  {personal.name}
+                </span>
+                <span className="text-slate-600 select-none">/</span>
+                <span className="relative inline-flex items-center h-5 overflow-hidden font-mono text-xs text-slate-400">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={personal.roles[roleIndex]}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.22, ease: "easeOut" }}
+                      className="inline-block"
+                    >
+                      {personal.roles[roleIndex]}
+                    </motion.span>
+                  </AnimatePresence>
+                </span>
+              </div>
+
+              <p className="text-slate-400 text-[15px] sm:text-base leading-[1.7] font-normal">
+                {personal.subDescription}
+              </p>
             </div>
 
-            {/* Typewriter role */}
-            <div className="h-9 flex items-center gap-2">
-              <span className="text-xl sm:text-2xl font-bold text-slate-100">
-                {personal.name}
-              </span>
-              <span className="text-slate-500 text-xl font-light">|</span>
-              <span className="text-lg sm:text-xl font-medium text-cyan-400">
-                {currentText}
-              </span>
-              <span className="w-[2px] h-6 bg-blue-500 rounded-full animate-pulse" />
-            </div>
-
-            {/* Sub-description */}
-            <p className="text-slate-400 text-base sm:text-lg leading-relaxed max-w-xl font-light">
-              {personal.subDescription}
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            {/* Tactile High-Contrast CTA Buttons */}
+            <div className="flex flex-wrap items-center gap-3 pt-1">
               <a
                 href="#projects"
-                className="group relative inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm text-white bg-blue-600 hover:bg-blue-500 shadow-[0_0_25px_rgba(37,99,235,0.45)] hover:shadow-[0_0_35px_rgba(37,99,235,0.7)] transition-all duration-300 hover:scale-[1.03] active:scale-95"
+                className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-sm text-slate-950 bg-slate-100 hover:bg-white transition-colors duration-200"
               >
-                <span>View My Work</span>
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                <span>Explore Projects</span>
+                <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
               </a>
 
               <a
                 href="#contact"
-                className="group inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm text-slate-200 hover:text-white bg-white/[0.04] border border-white/[0.1] hover:border-blue-400/40 hover:bg-blue-600/10 transition-all duration-300 hover:scale-[1.03] active:scale-95"
+                className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-sm text-slate-200 hover:text-white bg-white/[0.02] hover:bg-white/[0.06] border border-white/15 hover:border-white/30 transition-colors duration-200"
               >
-                <span>Contact Me</span>
-                <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <span>Get in Touch</span>
+                <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-white transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </div>
 
-            {/* Social media connections */}
-            <div className="flex items-center gap-3 pt-4">
-              <span className="text-xs uppercase tracking-widest text-slate-500 font-mono mr-2">
-                Connect
-              </span>
+            {/* Clean Hairline Social Ledger */}
+            <div className="pt-5 border-t border-white/[0.08] max-w-lg flex flex-wrap items-center gap-x-6 gap-y-2">
               {socials.map((soc) => {
                 const getIcon = () => {
-                  if (soc.icon === "github") return <GithubIcon className="w-4 h-4" />;
-                  if (soc.icon === "linkedin") return <LinkedinIcon className="w-4 h-4" />;
-                  if (soc.icon === "instagram") return <InstagramIcon className="w-4 h-4" />;
-                  return <Mail className="w-4 h-4" />;
+                  if (soc.icon === "github") return <GithubIcon className="w-3.5 h-3.5" />;
+                  if (soc.icon === "linkedin") return <LinkedinIcon className="w-3.5 h-3.5" />;
+                  if (soc.icon === "instagram") return <InstagramIcon className="w-3.5 h-3.5" />;
+                  return <Mail className="w-3.5 h-3.5" />;
                 };
 
                 return (
@@ -133,10 +121,13 @@ export default function Hero() {
                     href={soc.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-slate-400 hover:text-white hover:border-blue-500/50 hover:bg-blue-600/10 hover:shadow-[0_0_15px_rgba(37,99,235,0.25)] transition-all duration-300 hover:scale-110"
-                    aria-label={soc.name}
+                    className="group inline-flex items-center gap-1.5 text-xs font-mono text-slate-400 hover:text-slate-100 transition-colors duration-200"
                   >
-                    {getIcon()}
+                    <span className="text-slate-500 group-hover:text-slate-200 transition-colors">
+                      {getIcon()}
+                    </span>
+                    <span>{soc.name}</span>
+                    <ArrowUpRight className="w-3 h-3 text-slate-600 group-hover:text-slate-300 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </a>
                 );
               })}

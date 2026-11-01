@@ -6,8 +6,8 @@ export const portfolioData = {
     firstName: "Muhammad Rezky",
     lastName: "Julian",
     eyebrow: "Hello, I'm",
-    heroHeadingPrefix: "Turning Ideas",
-    heroHeadingSuffix: "Into Reality",
+    heroHeadingPrefix: "Building fast, reliable",
+    heroHeadingSuffix: "web applications",
     roles: [
       "Web Developer",
       "Frontend Developer",
@@ -15,7 +15,7 @@ export const portfolioData = {
       "Cybersecurity Enthusiast"
     ],
     tagline: "Saya membangun website dan aplikasi digital yang modern, cepat, dan memiliki user experience yang luar biasa.",
-    subDescription: "Dimulai dari rasa penasaran, berkembang menjadi passion. Aku membangun pengalaman digital yang tidak hanya terlihat bagus, tapi juga terasa bermakna bagi penggunanya.",
+    subDescription: "Fokus merancang antarmuka web yang rapi, responsif, dan sistem backend yang terstruktur—mulai dari dashboard operasional hingga aplikasi web full-stack.",
     aboutBio: "Sebagai pelajar dengan jurusan Rekayasa Perangkat Lunak, aku berfokus pada pengembangan teknologi yang tidak hanya fungsional, tetapi juga menghadirkan pengalaman digital yang modern, responsif, dan berdampak.",
     location: "Cimahi, Jawa Barat, Indonesia",
     university: "SMK Wiraswasta Cimahi",
