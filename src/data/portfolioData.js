@@ -1,3 +1,5 @@
+const asset = (path) => `${import.meta.env.BASE_URL}${path}`;
+
 export const portfolioData = {
   personal: {
     name: "Muhammad Rezky Julian",
@@ -20,8 +22,8 @@ export const portfolioData = {
     faculty: "Rekayasa Perangkat Lunak",
     department: "Pendidikan Teknologi Informasi",
     status: "Available for Projects & Collaboration",
-    profileImage: "/formal_profile.png",
-    aboutImage: "/about_photo.png",
+    profileImage: asset("formal_profile.png"),
+    aboutImage: asset("about_photo.png"),
     resumeUrl: "https://drive.google.com/drive/folders/1fEpaoTSlNIPH0tXN19TLXCY3yephYcfe",
     email: "mrezkyjulian1@gmail.com",
     spotifyEmbedUrl: "https://open.spotify.com/embed/playlist/4e7CA8obF944UVhwVOA884?utm_source=generator&theme=0",
@@ -119,7 +121,7 @@ export const portfolioData = {
       id: "fleetflow-enterprise",
       title: "FleetFlow Enterprise Logistics Platform",
       category: "Logistics",
-      image: "/projects/fleetflow_enterprise.png",
+      image: asset("projects/fleetflow_enterprise.png"),
       description: "Next-gen logistics operating system v5.0 dengan 3D interactive global network, dynamic route tracking, dan automated audit telemetry.",
       overview: "FleetFlow Enterprise adalah pusat kontrol logistik terintegrasi mutakhir yang direkayasa untuk visibilitas real-time terhadap pesanan, armada multi-moda, rute dinamis, dan telemetri audit otomatis.",
       problem: "Manajemen rantai pasok dan armada global sering terkendala visibilitas rute yang terfragmentasi dan lambatnya sinkronisasi data antar node logistik.",
@@ -140,7 +142,7 @@ export const portfolioData = {
       id: "nutrilens-ai",
       title: "NutriLens AI - Smart Nutrition Tracker",
       category: "AI",
-      image: "/projects/nutrilens_ai.png",
+      image: asset("projects/nutrilens_ai.png"),
       description: "Aplikasi pelacak nutrisi & kalkulator makro cerdas berbasis AI dengan fitur scan makanan instan dan visualisasi target harian interaktif.",
       overview: "NutriLens AI membantu pengguna memantau konsumsi kalori, protein, karbohidrat, lemak sehat, serta hidrasi air harian dengan analitik cerdas dan pemindaian makanan berbasis kecerdasan buatan.",
       problem: "Pencatatan nutrisi manual sering memakan waktu dan rumit, membuat banyak orang enggan menjaga konsistensi pola makan sehat.",
@@ -161,7 +163,7 @@ export const portfolioData = {
       id: "fleetflow-global",
       title: "FleetFlow Global Logistics Authority",
       category: "Logistics",
-      image: "/projects/fleetflow_global.jpg",
+      image: asset("projects/fleetflow_global.jpg"),
       description: "Portal logistik global dengan pelacakan kontainer kapal kargo terintegrasi, real-time bill of lading search, dan jangkauan 214 negara.",
       overview: "Platform manajemen rantai pasok maritim dan kargo global yang menghubungkan ribuan jalur pengiriman internasional dengan keandalan sistem 99.9% uptime.",
       problem: "Kebutuhan pelacakan kargo kontainer lintas samudra yang transparan dan akurat bagi perusahaan ekspor-impor internasional.",
@@ -182,7 +184,7 @@ export const portfolioData = {
       id: "ipos5-tracking",
       title: "IPOS5 - Package Tracking & Route Journey",
       category: "Logistics",
-      image: "/projects/ipos5_tracking.png",
+      image: asset("projects/ipos5_tracking.png"),
       description: "Sistem operasional pelacakan paket dan simulasi rute multi-stop 8 waypoint armada kargo dengan radar GPS telemetri real-time.",
       overview: "IPOS5 dirancang untuk operasional manajemen kargo dan logistik PT Pos Indonesia, memantau alur perjalanan kiriman antar kantor pos cabang dan sentral pengolahan paket.",
       problem: "Kompleksitas pemantauan armada angkutan pos yang menempuh banyak titik henti (multi-stop) dalam satu lintasan pengiriman.",
@@ -208,7 +210,7 @@ export const portfolioData = {
       issuer: "Global Tech Academy",
       date: "October 2023",
       category: "keahlian",
-      image: "/certificates/cert1.jpg",
+      image: asset("certificates/cert1.jpg"),
       skills: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"]
     },
     {
@@ -217,7 +219,7 @@ export const portfolioData = {
       issuer: "MikroTik & Cisco Networking Academy",
       date: "May 2024",
       category: "keahlian",
-      image: "/certificates/cert1.jpg",
+      image: asset("certificates/cert1.jpg"),
       skills: ["Routing", "Subnetting", "Firewall", "Network Architecture"]
     },
     {
@@ -226,7 +228,7 @@ export const portfolioData = {
       issuer: "DesignLab Indonesia",
       date: "January 2024",
       category: "keahlian",
-      image: "/certificates/cert1.jpg",
+      image: asset("certificates/cert1.jpg"),
       skills: ["Figma", "User Journey", "Design System", "Prototyping"]
     },
     {
@@ -235,7 +237,7 @@ export const portfolioData = {
       issuer: "Brawijaya Tech Fest",
       date: "November 2024",
       category: "prestasi",
-      image: "/certificates/cert1.jpg",
+      image: asset("certificates/cert1.jpg"),
       skills: ["Creative UI", "Framer Motion", "Responsive Design"]
     },
     {
@@ -244,7 +246,7 @@ export const portfolioData = {
       issuer: "Kemenristekdikti",
       date: "August 2024",
       category: "prestasi",
-      image: "/certificates/cert1.jpg",
+      image: asset("certificates/cert1.jpg"),
       skills: ["Problem Solving", "Full Stack Engineering"]
     }
   ],
